@@ -23,4 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
+# ignore lock files
 pnpm-lock.yaml
+package-lock.json
