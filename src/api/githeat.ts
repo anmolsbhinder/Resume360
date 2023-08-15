@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
 async function getContributions(token: string, username: string) {
-  const headers = {
-    'Authorization': `bearer ${token}`,
-  };
+	const headers = {
+		Authorization: `bearer ${token}`,
+	};
 
-  const body = {
-    query: `query {
+	const body = {
+		query: `query {
       user(login: "${username}") {
         name
         contributionsCollection {
@@ -26,10 +26,12 @@ async function getContributions(token: string, username: string) {
         }
       }
     }`,
-  };
+	};
 
-  const response = await axios.post('https://api.github.com/graphql', body, { headers });
-  return response.data.data;
+	const response = await axios.post("https://api.github.com/graphql", body, {
+		headers,
+	});
+	return response.data.data;
 }
 
-export {getContributions};
+export { getContributions };
