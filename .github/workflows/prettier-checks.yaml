@@ -1,8 +1,11 @@
 name: Prettier Format
-uses: creyD/prettier_action@v4.3
 on: [push]
 jobs:
-  Format:
+  Prettier:
     runs-on: ubuntu-latest
-      steps:
-        - run: npx prettier . --write
+    steps:
+        - name: Format Code
+          uses: creyD/prettier_action@v4.3
+          with:
+            prettier_options: --write .
+            only_changed: True
