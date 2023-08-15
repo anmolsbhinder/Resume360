@@ -1,0 +1,8 @@
+name: Prettier Format
+uses: creyD/prettier_action@v4.3
+on: [push]
+jobs:
+  Format:
+    runs-on: ubuntu-latest
+      steps:
+        - run: npx prettier . --write
