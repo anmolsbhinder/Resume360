@@ -1,3 +1,33 @@
 .demo {
 	@apply text-3xl font-bold underline;
 }
+
+.demo2 {
+	@apply text-2xl font-bold;
+}
+
+/* Define color classes for heatmap */
+.color-empty {
+	fill: #e1e4e8; /* Light Gray */
+}
+
+.color-scale-0 {
+	fill: #ebedf0; /* Light Gray */
+}
+
+.color-scale-1 {
+	fill: #9be9a8; /* Light Green */
+}
+
+.color-scale-2 {
+	fill: #40c463; /* Green */
+}
+
+.color-scale-3 {
+	fill: #30a14e; /* Dark Green */
+}
+
+/* Add more color classes if needed */
+.calendar {
+	width: 40%;
+}

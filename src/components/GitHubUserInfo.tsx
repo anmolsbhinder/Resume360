@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { fetchGitHubUserInfo } from "../api/github";
 import { getContributions } from "../api/githeat";
+import ReactCalendarHeatmap from "react-calendar-heatmap";
+import "react-calendar-heatmap/dist/styles.css";
 
 interface GitHubUserInfoProps {
 	username: string;
@@ -17,13 +19,13 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 				setUserInfo(userData);
 
 				const contributions = await getContributions(
-					"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",
+					"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",
 					username,
 				);
 				console.log("Contributions:", contributions);
 				setContributionData(contributions);
 
-				console.log(contributionData);
+				// console.log(contributionData);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 				setUserInfo(null);
@@ -37,6 +39,7 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 		<div>
 			{userInfo ? (
 				<div>
+					<h2 className="demo2">GitHub</h2>
 					<p>Repositories: {userInfo.userInfo.public_repos}</p>
 					<p>Followers: {userInfo.userInfo.followers}</p>
 					<p>Stars: {userInfo.stars.length}</p>
@@ -50,6 +53,36 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 						</p>
 					) : (
 						<p>Loading contribution data...</p>
+					)}
+
+					{contributionData && (
+						<div className="calendar">
+							<ReactCalendarHeatmap
+								values={contributionData.user.contributionsCollection.contributionCalendar.weeks.flatMap(
+									(week: any) =>
+										week.contributionDays.map((day: any) => ({
+											date: day.date,
+											count: day.contributionCount,
+										})),
+								)}
+								gutterSize={3}
+								classForValue={(value) => {
+									if (!value) {
+										return "color-empty";
+									}
+
+									if (value.count === 0) {
+										return "color-scale-0";
+									} else if (value.count <= 5) {
+										return "color-scale-1";
+									} else if (value.count <= 10) {
+										return "color-scale-2";
+									} else {
+										return "color-scale-3";
+									}
+								}}
+							/>
+						</div>
 					)}
 				</div>
 			) : (

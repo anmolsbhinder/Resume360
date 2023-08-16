@@ -1,7 +1,7 @@
 // src/api.ts
 import axios from "axios";
 
-const githubToken = "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"; // Replace with your GitHub token
+const githubToken = "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"; // Replace with your GitHub token
 
 const fetchGitHubUserInfo = async (username: string) => {
 	try {
