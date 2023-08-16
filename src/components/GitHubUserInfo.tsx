@@ -4,6 +4,8 @@ import { getContributions } from "../api/githeat";
 import ReactCalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 
+const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
+
 interface GitHubUserInfoProps {
 	username: string;
 }
@@ -18,10 +20,7 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 				const userData = await fetchGitHubUserInfo(username);
 				setUserInfo(userData);
 
-				const contributions = await getContributions(
-					"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",
-					username,
-				);
+				const contributions = await getContributions(githubToken, username);
 				console.log("Contributions:", contributions);
 				setContributionData(contributions);
 
