@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchGitHubUserInfo } from "../api/github";
 import { getContributions } from "../api/githeat";
 import ReactCalendarHeatmap from "react-calendar-heatmap";
+import { getPullRequestsByUsername } from "../api/gitpull";
 import "react-calendar-heatmap/dist/styles.css";
 
 const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
@@ -13,6 +14,7 @@ interface GitHubUserInfoProps {
 const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 	const [userInfo, setUserInfo] = useState<any | null>(null);
 	const [contributionData, setContributionData] = useState<any | null>(null);
+	const [pullData, setPullData] = useState<any | null>(null);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -21,10 +23,17 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 				setUserInfo(userData);
 
 				const contributions = await getContributions(githubToken, username);
-				console.log("Contributions:", contributions);
+				// console.log("Contributions:", contributions);
 				setContributionData(contributions);
+				// console.log("Contributions:", contributionData);
 
-				// console.log(contributionData);
+				const pullRequests = await getPullRequestsByUsername(
+					username,
+					githubToken,
+				);
+				setPullData(pullRequests);
+
+				// console.log(pullRequests);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 				setUserInfo(null);
@@ -33,6 +42,9 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 
 		fetchData();
 	}, [username]);
+
+	console.log(pullData);
+	// console.log("Contributions:", contributionData);
 
 	return (
 		<div>
@@ -53,6 +65,14 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 					) : (
 						<p>Loading contribution data...</p>
 					)}
+
+					{pullData ? (
+						<p>Pull Requests: {pullData.length}</p>
+					) : (
+						<p>Loading PR data...</p>
+					)}
+
+					{/* <p>Pull Requests: {pullData.length}</p> */}
 
 					{contributionData && (
 						<div className="calendar">

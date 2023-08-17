@@ -3,7 +3,7 @@ import "./App.css";
 import GitHubUserInfo from "../src/components/GitHubUserInfo";
 
 const App: React.FC = () => {
-	const initialUsername = "PerfectoZ"; // Replace with your initial username
+	const initialUsername = "anmolsbhinder"; // Replace with your initial username
 
 	return (
 		<div>

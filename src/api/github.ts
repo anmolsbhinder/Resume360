@@ -4,7 +4,7 @@ const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 
 const fetchGitHubUserInfo = async (username: string) => {
 	try {
-		console.log(githubToken);
+		// console.log(githubToken);
 		const [userInfoResponse, starsResponse] = await Promise.all([
 			axios.get(`https://api.github.com/users/${username}`, {
 				headers: {
