@@ -77,6 +77,8 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 					{contributionData && (
 						<div className="calendar">
 							<ReactCalendarHeatmap
+								startDate={new Date("2022-09-01")}
+								endDate={new Date("2023-08-31")}
 								values={contributionData.user.contributionsCollection.contributionCalendar.weeks.flatMap(
 									(week: any) =>
 										week.contributionDays.map((day: any) => ({
@@ -106,7 +108,7 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 
 					{contributionData ? (
 						<p>
-							Contributions in 2023:{" "}
+							Last year Contributions:{" "}
 							{
 								contributionData.user.contributionsCollection
 									.contributionCalendar.totalContributions

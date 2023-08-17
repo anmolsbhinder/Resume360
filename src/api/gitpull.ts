@@ -19,13 +19,13 @@ const getPullRequestsByUsername = async (
 			},
 		});
 
-		const pullRequests: PullRequest[] = response.data.items.map(
-			(item: any) => ({
-				url: item.url,
-				title: item.title,
-				repository_url: item.repository_url,
-			}),
-		);
+		// const pullRequests: PullRequest[] = response.data.items.map(
+		// 	(item: any) => ({
+		// 		url: item.url,
+		// 		title: item.title,
+		// 		repository_url: item.repository_url,
+		// 	}),
+		// );
 
 		return response.data;
 	} catch (error) {
