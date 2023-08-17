@@ -27,7 +27,7 @@ const getPullRequestsByUsername = async (
 			}),
 		);
 
-		return pullRequests;
+		return response.data;
 	} catch (error) {
 		console.error("Error fetching pull requests:", error);
 		return [];

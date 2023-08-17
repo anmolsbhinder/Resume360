@@ -3,6 +3,7 @@ import { fetchGitHubUserInfo } from "../api/github";
 import { getContributions } from "../api/githeat";
 import ReactCalendarHeatmap from "react-calendar-heatmap";
 import { getPullRequestsByUsername } from "../api/gitpull";
+import { getCommitsByUsername } from "../api/gitcommit";
 import "react-calendar-heatmap/dist/styles.css";
 
 const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
@@ -15,6 +16,7 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 	const [userInfo, setUserInfo] = useState<any | null>(null);
 	const [contributionData, setContributionData] = useState<any | null>(null);
 	const [pullData, setPullData] = useState<any | null>(null);
+	const [commitData, setCommitData] = useState<any | null>(null);
 
 	useEffect(() => {
 		async function fetchData() {
@@ -33,6 +35,9 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 				);
 				setPullData(pullRequests);
 
+				const commits = await getCommitsByUsername(username, githubToken);
+				setCommitData(commits);
+
 				// console.log(pullRequests);
 			} catch (error) {
 				console.error("Error fetching data:", error);
@@ -43,7 +48,7 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 		fetchData();
 	}, [username]);
 
-	console.log(pullData);
+	// console.log(commitData);
 	// console.log("Contributions:", contributionData);
 
 	return (
@@ -54,22 +59,17 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 					<p>Repositories: {userInfo.userInfo.public_repos}</p>
 					<p>Followers: {userInfo.userInfo.followers}</p>
 					<p>Stars: {userInfo.stars.length}</p>
-					{contributionData ? (
-						<p>
-							Contributions:{" "}
-							{
-								contributionData.user.contributionsCollection
-									.contributionCalendar.totalContributions
-							}
-						</p>
-					) : (
-						<p>Loading contribution data...</p>
-					)}
 
 					{pullData ? (
-						<p>Pull Requests: {pullData.length}</p>
+						<p>Pull Requests: {pullData.total_count}</p>
 					) : (
 						<p>Loading PR data...</p>
+					)}
+
+					{commitData ? (
+						<p>Commits: {commitData.total_count}</p>
+					) : (
+						<p>Loading Commits...</p>
 					)}
 
 					{/* <p>Pull Requests: {pullData.length}</p> */}
@@ -102,6 +102,18 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 								}}
 							/>
 						</div>
+					)}
+
+					{contributionData ? (
+						<p>
+							Contributions in 2023:{" "}
+							{
+								contributionData.user.contributionsCollection
+									.contributionCalendar.totalContributions
+							}
+						</p>
+					) : (
+						<p>Loading contribution data...</p>
 					)}
 				</div>
 			) : (
