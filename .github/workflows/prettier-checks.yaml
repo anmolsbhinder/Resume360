@@ -4,8 +4,16 @@ jobs:
   Prettier:
     runs-on: ubuntu-latest
     steps:
-        - name: Format Code
-          uses: creyD/prettier_action@v4.3
+        - name: Checkout Repository
+          uses: actions/checkout@v2
+
+        - name: Set up Node.js
+          uses: actions/setup-node@v2
           with:
-            prettier_options: --write **/*.{js,md}
-            only_changed: True
+            node-version: 18
+
+        - name: Install Dependencies
+          run: npm install
+
+        - name: Format Code
+          run: npx prettier "**/*"
