@@ -33,7 +33,7 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 		}
 
 		fetchData();
-	}, [username]);
+	}, [contributionData, username]);
 
 	return (
 		<div>
