@@ -17,7 +17,3 @@ jobs:
 
         - name: Run Prettier Check
           run: npx prettier --check .
-
-        - name: Auto-fix with Prettier
-          if: ${{ failure() }}
-          run: npx prettier --write .
