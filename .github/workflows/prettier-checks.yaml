@@ -17,3 +17,6 @@ jobs:
 
         - name: Run Prettier Check
           run: npx prettier --check .
+
+        - name: Auto-fix with Prettier
+          run: npx prettier --write .
