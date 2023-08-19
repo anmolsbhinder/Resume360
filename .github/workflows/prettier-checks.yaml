@@ -15,5 +15,5 @@ jobs:
         - name: Install Dependencies
           run: npm install
 
-        - name: Format Code
-          run: npx prettier "**/*" --config .prettierrc.json --ignore-path .prettierignore
+        - name: Run Prettier Check
+          run: npx prettier --check .
