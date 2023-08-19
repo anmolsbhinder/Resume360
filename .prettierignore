@@ -1,4 +1,7 @@
 *.yaml
+.husky
+.gitignore
+.prettierignore
 
 # Ignore artifacts:
 build
