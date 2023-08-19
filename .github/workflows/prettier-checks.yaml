@@ -16,4 +16,4 @@ jobs:
           run: npm install
 
         - name: Format Code
-          run: npx prettier "**/*" --ignore-path .prettierignore
+          run: npx prettier "**/*" --config .prettierrc --ignore-path .prettierignore
