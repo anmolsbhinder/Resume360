@@ -5,7 +5,7 @@ import Github from "./components/Github";
 import Codeforces from "./components/Codeforces";
 
 const App: React.FC = () => {
-	const initialUsername = "anmolsbhinder"; // Replace with your initial username
+	const initialUsername = "PerfectoZ"; // Replace with your initial username
 
 	return (
 		<div>

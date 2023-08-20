@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import { fetchGithub } from "../api/gitapi";
 import { getContributions } from "../api/githeat";
@@ -6,7 +7,8 @@ import { getPullRequestsByUsername } from "../api/gitpull";
 import { getCommitsByUsername } from "../api/gitcommit";
 import "react-calendar-heatmap/dist/styles.css";
 
-const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
+// const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
+const githubToken: string = process.env.VITE_GITHUB_ACCESS_TOKEN || "";
 
 interface GithubProps {
 	username: string;
