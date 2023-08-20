@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 // import LeetCodeSolvedCount from '../src/components/LCSolved';
 import Github from "./components/Github";

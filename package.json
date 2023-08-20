@@ -11,7 +11,9 @@
 		"prepare": "husky install"
 	},
 	"lint-staged": {
-		"**/*": "prettier --write --ignore-unknown"
+		"**/*": "prettier --write --ignore-unknown",
+		"*.{ts,tsx}": "eslint --cache --fix",
+		"*.{js,css,md}": "prettier --write"
 	},
 	"dependencies": {
 		"axios": "^1.4.0",
@@ -29,6 +31,7 @@
 		"@vitejs/plugin-react-swc": "^3.3.2",
 		"autoprefixer": "^10.4.15",
 		"eslint": "^8.45.0",
+		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.3",
 		"husky": "^8.0.3",
