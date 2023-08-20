@@ -6,10 +6,8 @@ import ReactCalendarHeatmap from "react-calendar-heatmap";
 import { getPullRequestsByUsername } from "../api/gitpull";
 import { getCommitsByUsername } from "../api/gitcommit";
 import "react-calendar-heatmap/dist/styles.css";
-import process from "process";
 
-// const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
-const githubToken: string = process.env.VITE_GITHUB_ACCESS_TOKEN || "";
+const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 
 interface GithubProps {
 	username: string;
@@ -28,9 +26,7 @@ const Github: React.FC<GithubProps> = ({ username }) => {
 				setUserInfo(userData);
 
 				const contributions = await getContributions(githubToken, username);
-				// console.log("Contributions:", contributions);
 				setContributionData(contributions);
-				// console.log("Contributions:", contributionData);
 
 				const pullRequests = await getPullRequestsByUsername(
 					username,
@@ -40,8 +36,6 @@ const Github: React.FC<GithubProps> = ({ username }) => {
 
 				const commits = await getCommitsByUsername(username, githubToken);
 				setCommitData(commits);
-
-				// console.log(pullRequests);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 				setUserInfo(null);
@@ -50,9 +44,6 @@ const Github: React.FC<GithubProps> = ({ username }) => {
 
 		fetchData();
 	}, [username]);
-
-	// console.log(commitData);
-	// console.log("Contributions:", contributionData);
 
 	return (
 		<div>
