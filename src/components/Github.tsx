@@ -6,6 +6,7 @@ import ReactCalendarHeatmap from "react-calendar-heatmap";
 import { getPullRequestsByUsername } from "../api/gitpull";
 import { getCommitsByUsername } from "../api/gitcommit";
 import "react-calendar-heatmap/dist/styles.css";
+import process from "process";
 
 // const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 const githubToken: string = process.env.VITE_GITHUB_ACCESS_TOKEN || "";

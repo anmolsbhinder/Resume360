@@ -1,4 +1,5 @@
 import axios from "axios";
+import process from "process";
 
 // const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 const githubToken: string = process.env.VITE_GITHUB_ACCESS_TOKEN || "";
