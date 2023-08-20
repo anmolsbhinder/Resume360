@@ -1,10 +1,10 @@
-// src/api.ts
 import axios from "axios";
 
-const githubToken = "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"; // Replace with your GitHub token
+const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 
-const fetchGitHubUserInfo = async (username: string) => {
+const fetchGithub = async (username: string) => {
 	try {
+		// console.log(githubToken);
 		const [userInfoResponse, starsResponse] = await Promise.all([
 			axios.get(`https://api.github.com/users/${username}`, {
 				headers: {
@@ -25,4 +25,4 @@ const fetchGitHubUserInfo = async (username: string) => {
 	}
 };
 
-export { fetchGitHubUserInfo };
+export { fetchGithub };
