@@ -2,7 +2,7 @@ import axios from "axios";
 
 const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 
-const fetchGitHubUserInfo = async (username: string) => {
+const fetchGithub = async (username: string) => {
 	try {
 		// console.log(githubToken);
 		const [userInfoResponse, starsResponse] = await Promise.all([
@@ -25,4 +25,4 @@ const fetchGitHubUserInfo = async (username: string) => {
 	}
 };
 
-export { fetchGitHubUserInfo };
+export { fetchGithub };

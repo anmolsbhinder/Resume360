@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchGitHubUserInfo } from "../api/github";
+import { fetchGithub } from "../api/gitapi";
 import { getContributions } from "../api/githeat";
 import ReactCalendarHeatmap from "react-calendar-heatmap";
 import { getPullRequestsByUsername } from "../api/gitpull";
@@ -8,11 +8,11 @@ import "react-calendar-heatmap/dist/styles.css";
 
 const githubToken = import.meta.env.VITE_GITHUB_ACCESS_TOKEN;
 
-interface GitHubUserInfoProps {
+interface GithubProps {
 	username: string;
 }
 
-const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
+const Github: React.FC<GithubProps> = ({ username }) => {
 	const [userInfo, setUserInfo] = useState<any | null>(null);
 	const [contributionData, setContributionData] = useState<any | null>(null);
 	const [pullData, setPullData] = useState<any | null>(null);
@@ -21,7 +21,7 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const userData = await fetchGitHubUserInfo(username);
+				const userData = await fetchGithub(username);
 				setUserInfo(userData);
 
 				const contributions = await getContributions(githubToken, username);
@@ -125,4 +125,4 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 	);
 };
 
-export default GitHubUserInfo;
+export default Github;
