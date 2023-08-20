@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 // import LeetCodeSolvedCount from '../src/components/LCSolved';
 import GitHubUserInfo from "../src/components/GitHubUserInfo";

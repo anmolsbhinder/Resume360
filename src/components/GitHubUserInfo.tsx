@@ -7,7 +7,9 @@ interface GitHubUserInfoProps {
 }
 
 const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
+	// eslint-disable-next-line
 	const [userInfo, setUserInfo] = useState<any | null>(null);
+	// eslint-disable-next-line
 	const [contributionData, setContributionData] = useState<any | null>(null);
 
 	useEffect(() => {
@@ -31,7 +33,7 @@ const GitHubUserInfo: React.FC<GitHubUserInfoProps> = ({ username }) => {
 		}
 
 		fetchData();
-	}, [username]);
+	}, [contributionData, username]);
 
 	return (
 		<div>
