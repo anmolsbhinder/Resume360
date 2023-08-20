@@ -1,19 +1,14 @@
-// src/api.ts
 import axios from "axios";
 
-const fetchLeetCodeSolvedCount = async (username: string): Promise<number> => {
+async function getLeetcodeDetails(userName: string) {
 	try {
-		const response = await axios.get(
-			`https://api.github.com/users/${username}`,
+		const user = await axios.get(
+			`https://leetcode-stats-api.herokuapp.com/${userName}`,
 		);
-		const submissions = response.data.submissions_dump;
-		const solvedCount = submissions.filter(
-			(submission: any) => submission.status === "Accepted",
-		).length;
-		return solvedCount;
-	} catch (error) {
-		throw new Error("Error fetching LeetCode solved count");
+		return user.data;
+	} catch (err) {
+		console.error("Error fetching LC details", err);
 	}
-};
+}
 
-export { fetchLeetCodeSolvedCount };
+export default getLeetcodeDetails;

@@ -43,6 +43,8 @@ const Github: React.FC<GithubProps> = ({ username }) => {
 		}
 
 		fetchData();
+
+		console.log(contributionData.user.contributionsCollection);
 	}, [username]);
 
 	return (
