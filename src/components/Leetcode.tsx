@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import getLeetcodeDetails from "../api/leetcode";
 import "../App.css";
+import LeetCodeUserInfo from "./LeetContest";
 
 interface LeetcodeUserDetails {
 	totalSolved: number;
@@ -43,16 +44,13 @@ const Leetcode: React.FC = () => {
 			<div className="leetcode">
 				<h1 className="title">Leetcode</h1>
 				{userDetails.totalSolved > 0 && (
-					<p>Total Questions Solved: {userDetails.totalSolved}</p>
+					<p>Problems Solved: {userDetails.totalSolved}</p>
 				)}
 				{userDetails.easySolved > 0 && (
-					<p>Questions Solved (Easy): {userDetails.easySolved}</p>
-				)}
-				{userDetails.mediumSolved > 0 && (
-					<p>Questions Solved (Medium): {userDetails.mediumSolved}</p>
-				)}
-				{userDetails.hardSolved > 0 && (
-					<p>Questions Solved (Hard): {userDetails.hardSolved}</p>
+					<p>
+						Easy: {userDetails.easySolved} | Medium: {userDetails.mediumSolved}{" "}
+						| Hard: {userDetails.hardSolved}
+					</p>
 				)}
 				{userDetails.acceptanceRate > 0 && (
 					<p>Acceptance Rate: {userDetails.acceptanceRate}</p>
@@ -64,6 +62,8 @@ const Leetcode: React.FC = () => {
 				{userDetails.reputation > 0 && (
 					<p>LeetCode Reputation: {userDetails.reputation}</p>
 				)}
+
+				<LeetCodeUserInfo username={userName} />
 			</div>
 		)
 	);

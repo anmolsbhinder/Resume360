@@ -16,6 +16,7 @@
 		"*.{js,css,md}": "prettier --write"
 	},
 	"dependencies": {
+		"@types/express": "^4.17.17",
 		"axios": "^1.4.0",
 		"react": "^18.2.0",
 		"react-calendar-heatmap": "^1.9.0",
@@ -35,11 +36,13 @@
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.3",
+		"express": "^4.18.2",
 		"husky": "^8.0.3",
 		"lint-staged": "^14.0.0",
 		"postcss": "^8.4.27",
 		"prettier": "3.0.2",
 		"tailwindcss": "^3.3.3",
+		"ts-node": "^10.9.1",
 		"typescript": "^5.0.2",
 		"vite": "^4.4.5"
 	}
