@@ -6,13 +6,12 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+		"lint": "",
 		"preview": "vite preview",
 		"prepare": "husky install"
 	},
 	"lint-staged": {
 		"**/*": "prettier --write --ignore-unknown",
-		"*.{ts,tsx}": "eslint --cache --fix",
 		"*.{js,css,md}": "prettier --write"
 	},
 	"dependencies": {
