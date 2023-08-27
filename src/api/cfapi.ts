@@ -23,6 +23,8 @@ async function getUserRating(handle: string) {
 		);
 		const submissions = submissionsResponse.data.result;
 
+		console.log(userRating);
+
 		if (userRating.length > 0) {
 			const latestRating = userRating[userRating.length - 1];
 			const rating = latestRating.newRating;

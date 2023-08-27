@@ -28,14 +28,20 @@ const LeetCodeUserInfo: React.FC<LeetCodeUserInfoProps> = ({ username }) => {
 
 	return (
 		<div>
-			<h2>LeetCode User Contest Info</h2>
 			{leetCodeUserContestInfo ? (
 				<div>
-					<h3>Contest Ranking</h3>
-					{/* Display the fetched data */}
-
-					<h3>Contest Ranking History</h3>
-					{/* Display the fetched data */}
+					<p>
+						Contests:{" "}
+						{leetCodeUserContestInfo.userContestRanking.attendedContestsCount}
+					</p>
+					<p>
+						Rating:{" "}
+						{Math.round(leetCodeUserContestInfo.userContestRanking.rating)}
+					</p>
+					<p>
+						Among top:{" "}
+						{leetCodeUserContestInfo.userContestRanking.topPercentage}%
+					</p>
 				</div>
 			) : (
 				<p>Loading LeetCode user contest info...</p>
