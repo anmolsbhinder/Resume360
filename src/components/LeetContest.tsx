@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { leetcodeContest } from "../api/leetheat";
+import ContestRatingGraph from "./LCgraph";
 
 interface LeetCodeUserInfoProps {
 	username: string;
@@ -42,6 +43,11 @@ const LeetCodeUserInfo: React.FC<LeetCodeUserInfoProps> = ({ username }) => {
 						Among top:{" "}
 						{leetCodeUserContestInfo.userContestRanking.topPercentage}%
 					</p>
+					<ContestRatingGraph
+						userContestRankingHistory={
+							leetCodeUserContestInfo.userContestRankingHistory
+						}
+					/>
 				</div>
 			) : (
 				<p>Loading LeetCode user contest info...</p>
